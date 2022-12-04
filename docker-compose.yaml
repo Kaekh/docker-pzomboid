@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  pzomboid-server:
+     image: kaekh/pzomboid
+     restart: "on-failure:5"
+     ports:
+        - "16261:16261/udp"
+        - "16262:16262/udp"
+     volumes:
+        - ./data:/opt/pzserver/Zomboid
+        - ./files:/opt/pzserver/files
