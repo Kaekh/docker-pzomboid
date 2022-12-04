@@ -3,8 +3,12 @@
 ###########################################################
 FROM kaekh/steamcmd
 
-ENV USER pzuser
+ARG UID=1000
+ARG GID=1000
+
 ENV HOME /opt/pzserver
+ENV USER pzuser
+ENV GROUP pzuser
 
 #Install and update packages
 RUN apt-get update \
@@ -13,7 +17,8 @@ RUN apt-get update \
 
 #download start script and init folders
 RUN mkdir -p "${HOME}" \
-        && useradd -d ${HOME} ${USER} \
+        && groupadd -g ${GID} ${GROUP} \
+        && useradd --no-log-init -d ${HOME} -u ${UID} -g ${GROUP} ${USER} \
         && chown -R ${USER}:${USER} ${HOME}
 
 
