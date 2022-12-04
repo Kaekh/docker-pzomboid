@@ -45,7 +45,7 @@ runGame(){
 }
 
 echo "Checking for updates..."
-bash steamcmd +force_install_dir "$install_dir" +login anonymous +app_update 380870 +quit
+bash steamcmd +force_install_dir "${HOME}/server" +login anonymous +app_update 380870 +quit
 
 if [[ -f "$mod_file_list" ]]; then
         checkMods
