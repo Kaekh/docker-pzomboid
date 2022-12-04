@@ -26,8 +26,8 @@ checkMods(){
 
                 echo "Installing mods..."
                 for m in "${mods[@]}"; do
-                        for folder in $mods_temp_dir/steamapps/workshop/content/$mods_id/$m/mods; do
-                                rsync -avui "${folder}" $mods_dir
+                        for folder in $mods_temp_dir/steamapps/workshop/content/$mods_id/$m/mods/*; do
+                                rsync -avui "$folder" "$mods_dir"
                                 echo "$folder updated"
                         done
                 done
